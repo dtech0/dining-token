@@ -30,7 +30,7 @@ export class AuthController {
 
     const userId = req.user.sub;
 console.log("🛠️ Updating profile for User ID:", userId);
-    return this.authService.updateUserProfile(req.user.userId, hallName, student_id);
+        return this.authService.updateUserProfile(req.user.userId || req.user.sub, hallName, student_id);
   }
 @Get('profile')
 @UseGuards(AuthGuard('jwt')) 
