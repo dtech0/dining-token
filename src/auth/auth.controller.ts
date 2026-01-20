@@ -38,20 +38,7 @@ console.log("🛠️ Updating profile for User ID:", userId);
     
 return this.usersService.findById(req.user.sub);
 }
- //newly added 
-  @UseGuards(AuthGuard('jwt'))
-@Get('pending-students')
-async getPendingStudents(@Request() req) {
-  const adminHall = req.user.hallName;
-  return this.authService.getStudentsByHall(adminHall);
-}
 
-@UseGuards(AuthGuard('jwt'))
-@Patch('verify-student/:id')
-async verifyStudent(@Param('id') id: string) {
-  return this.authService.verifyStudentStatus(id);
-}
-  //ended
   
   @Post('login')
   login(@Body() body: LoginDto) {
