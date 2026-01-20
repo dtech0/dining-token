@@ -28,7 +28,8 @@ export class AuthController {
       throw new BadRequestException('Hall Name and Student ID are required');
     }
 
-    // req.user.userId আসবে আপনার JWT Strategy থেকে
+    const userId = req.user.sub;
+console.log("🛠️ Updating profile for User ID:", userId);
     return this.authService.updateUserProfile(req.user.userId, hallName, student_id);
   }
 @Get('profile')
